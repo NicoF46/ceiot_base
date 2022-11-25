@@ -3,27 +3,37 @@ module.exports = class Lista {
         this.elementos = [];
     }
 
-    count(){
+    count() {
         return this.elementos.length;
     }
 
-    add(clave, valor){
-        if (typeof(clave) == 'string'){
-            this.elementos.push({'clave': clave, 'valor': valor});
-            console.log(this.elementos);
-
-            return true;
+    indexOf(clave) {
+        for (var indice = 0; indice < this.elementos.length; indice++) {
+            if (this.elementos[indice].clave == clave) {
+                return indice;
+            }
         }
-        else
-            return false; 
+        return NaN;
     }
 
-    find(clave){
-        console.log(this.elementos);
-        for (var indice = 0; indice < this.elementos.length; indice++) {
-            if (this.elementos[indice].clave == clave){
-                return this.elementos[indice].valor;
+    add(clave, valor) {
+        if (typeof (clave) != 'string') {
+            return false;
+        }
+        else {
+            if (!isNaN(this.indexOf(clave))) {
+                return false;
             }
+        }
+        this.elementos.push({ 'clave': clave, 'valor': valor });
+        return true;
+    }
+
+
+    find(clave) {
+        var indice = this.indexOf(clave);
+        if (!isNaN(indice)) {
+            return this.elementos[indice].valor;
         }
     }
 };

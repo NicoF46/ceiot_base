@@ -25,21 +25,36 @@ describe("cuando se agrega un nuevo elemento en la lista vacia", function() {
         var lista = new Lista();
 
         describe("cuando la clave es un numero", function(){
+            cantidad_elementos = lista.count();
             it("devuelve un error", function(){
                 assert.isFalse(lista.add(1,1));
             })
     
             it("no se agregan nuevos elementos", function() {
-                assert.equal(lista.count(), 0);
+                assert.equal(lista.count(), cantidad_elementos);
             })
         })
+
         describe("cuando la clave esta vacia", function(){
+            cantidad_elementos = lista.count();
             it("devuelve un error", function(){
                 assert.isFalse(lista.add(null,1));
             })
     
             it("no se agregan nuevos elementos", function() {
-                assert.equal(lista.count(), 0);
+                assert.equal(lista.count(), cantidad_elementos);
+            })
+        })
+
+        describe("cuando la clave que se agrego ya existe en la lista", function(){
+            lista.add("clave","valor")
+            cantidad_elementos = lista.count();
+            it("devuelve un error", function(){
+                assert.isFalse(lista.add("clave","otro_valor"));
+            })
+    
+            it("no se agregan nuevos elementos", function() {
+                assert.equal(lista.count(), lista.count());
             })
         })
     })
