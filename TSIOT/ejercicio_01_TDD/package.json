@@ -1,0 +1,20 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "description": "Primer practico iot",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "coverage": "nyc --reporter=html mocha"
+  },
+  "keywords": [
+    "NicoF"
+  ],
+  "author": "NicoF",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0",
+    "nyc": "^15.1.0"
+  }
+}
