@@ -36,4 +36,13 @@ module.exports = class Lista {
             return this.elementos[indice].valor;
         }
     }
+
+    remove(clave){
+        var indice = this.indexOf(clave);
+        if(!isNaN(indice)){
+            this.elementos.splice(indice, 1);
+            return true;
+        }
+        return false;
+    }
 };
